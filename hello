@@ -1,0 +1,62 @@
+create table users(
+userid int(10),
+name varchar(20),
+emailid varchar(30));
+
+create table pictures(
+pictureid int(10) primary key unique,
+picturename varchar(20),
+userid int(10),
+caption varchar(40),
+music varchar(20),
+engineering varchar(20),
+art varchar(20),
+science varchar(20),
+history varchar(20),
+dateofposted date,
+picturepath varchar(20));
+
+ALTER TABLE pictures ADD CONSTRAINT FK FOREIGN KEY (userid) REFERENCES users(userid); 
+
+create table liketag(userid int(10),pictureid int(10));
+
+SELECT pictureid from pictures where userid=1
+SELECT caption from  pictures where userid=2;
+
+
+
+
+select * from pictures where dateofposted >= DATE_SUB(NOW(),INTERVAL 1 YEAR);
+
+
+
+SELECT * FROM pictures WHERE caption='london';
+
+delete from liketag where userid=3;
+
+
+UPDATE users SET f=kumar WHERE userid=9;
+
+ SELECT COUNT(*) FROM liketag;
+
+
+    SELECT   userid
+    FROM     liketag
+    GROUP BY pictureid
+    ORDER BY COUNT(*) DESC
+    LIMIT    1;
+
+
+elect userid from liketag group by userid having count(userid) = (select count(userid) as great
+from liketag
+group by item order by great desc limit 1);
+
+
+select pictureid,count as c from liketag
+group by PicId
+order by c desc;
+
+SELECT emailid  FROM users WHERE email LIKE '%gmail.com';
+
+
+
